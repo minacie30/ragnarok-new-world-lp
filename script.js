@@ -289,8 +289,9 @@
   }
 
   // Hero showroom: 8 statues on a ring (45 degrees apart); the one in front
-  // is featured. The ring turns one step every few seconds, slowly. Picking
-  // a statue turns it to the front.
+  // is featured. The ring turns one step every few seconds on its own,
+  // whether or not the mouse is over it. Picking a statue turns it to the
+  // front and holds it for 8 seconds before the turning resumes.
   var statueRing = document.querySelector('.statue-ring');
   if (statueRing) {
     var statues = Array.prototype.slice.call(statueRing.querySelectorAll('.statue'));
@@ -298,7 +299,6 @@
     var N = statues.length;
     var turn = 0;
     var showOnScreen = false;
-    var hovering = false;
     var heldUntil = 0;
     var timer = null;
 
@@ -332,7 +332,7 @@
     }
 
     function tick() {
-      if (showOnScreen && !hovering && !document.hidden && Date.now() > heldUntil) {
+      if (showOnScreen && !document.hidden && Date.now() > heldUntil) {
         turn += 1;
         render();
       }
@@ -354,20 +354,22 @@
         goTo(k);
         playSelectSound();
       });
+      // Keyboard users: bring the focused statue to the front and hold it
+      // for a while. Mouse clicks are handled above and never block the
+      // automatic turning for longer than the hold.
       btn.addEventListener('focus', function () {
-        hovering = true;
-        if (front() !== k) {
-          goTo(k);
+        var byKeyboard = false;
+        try { byKeyboard = btn.matches(':focus-visible'); } catch (e) { byKeyboard = false; }
+        if (byKeyboard) {
+          heldUntil = Date.now() + 8000;
+          if (front() !== k) {
+            goTo(k);
+          }
         }
       });
-      btn.addEventListener('blur', function () { hovering = false; });
     });
 
     var showroom = statueRing.closest('.showroom');
-    if (showroom) {
-      showroom.addEventListener('mouseenter', function () { hovering = true; });
-      showroom.addEventListener('mouseleave', function () { hovering = false; });
-    }
 
     if ('IntersectionObserver' in window && showroom) {
       new IntersectionObserver(function (entries) {
