@@ -429,14 +429,9 @@ h2 {
    The one facing the screen is biggest; the rest stand back, smaller and
    higher. Every statue always faces the viewer (billboarding via --ring).
    Bottom: a wider ring of 12 glass display cases, 4 visible at a time. */
-@property --ring {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
-}
 .showroom {
   --sw: clamp(100px, 12vw, 160px);
-  --sr: calc(var(--sw) * 1.75);
+  --sr: calc(var(--sw) * 2.4);
   --vw: clamp(150px, 19vw, 240px);
   --vr: calc(var(--vw) * 2.05);
   padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(1.5rem, 4vw, 3rem);
@@ -454,9 +449,9 @@ h2 {
 /* ---- Statues ---- */
 .statue-stage {
   position: relative;
-  height: calc(var(--sw) * 3.45);
+  height: calc(var(--sw) * 3.8);
   margin-top: 0.5rem;
-  perspective: calc(var(--sw) * 4.6);
+  perspective: calc(var(--sw) * 6.8);
   perspective-origin: 50% 0%;
 }
 .show-floor {
@@ -479,15 +474,16 @@ h2 {
 .statue-ring {
   position: absolute;
   left: 50%;
-  bottom: calc(var(--sw) * 1.45);
+  bottom: calc(var(--sw) * 1.5);
   width: var(--sw);
   height: calc(var(--sw) * 1.6);
   margin: 0 0 0 calc(var(--sw) / -2);
   padding: 0;
   list-style: none;
   transform-style: preserve-3d;
-  transform: rotateY(var(--ring));
-  transition: --ring 2.2s cubic-bezier(0.45, 0.05, 0.25, 1);
+  will-change: transform;
+  /* script.js sets the angle; ring and faces animate on the GPU, in sync */
+  transition: transform 2.2s cubic-bezier(0.45, 0.05, 0.25, 1);
 }
 .statue {
   position: absolute;
@@ -524,8 +520,10 @@ h2 {
   justify-content: flex-end;
   width: 100%;
   height: 100%;
-  transform: rotateY(calc(-1 * (var(--a) + var(--ring)))) rotateX(10deg);
+  transform: rotateY(calc(-1 * var(--a))) rotateX(10deg);
   transform-origin: 50% 100%;
+  will-change: transform;
+  transition: transform 2.2s cubic-bezier(0.45, 0.05, 0.25, 1);
 }
 /* Size and light by distance from the front: the front statue is the star */
 .statue-body {
@@ -536,16 +534,20 @@ h2 {
   width: 100%;
   transform: scale(var(--s));
   transform-origin: 50% 100%;
+  will-change: transform, filter;
   transition: transform 2.2s cubic-bezier(0.45, 0.05, 0.25, 1), filter 1.2s ease;
 }
 /* No grow-in on page load: animate only real turns (script adds .is-ready) */
 .showroom:not(.is-ready) .statue-body,
+.showroom:not(.is-ready) .statue-face,
 .showroom:not(.is-ready) .statue-ring { transition: none; }
-.statue[data-dist="0"] .statue-body { --s: 1.2; }
-.statue[data-dist="1"] .statue-body { --s: 0.85; filter: brightness(0.8); }
-.statue[data-dist="2"] .statue-body { --s: 0.72; filter: brightness(0.66); }
+.statue[data-dist="0"] .statue-body { --s: 1.45; }
+/* Background statues: smaller, darker and out of focus, so the eye goes
+   to the front one */
+.statue[data-dist="1"] .statue-body { --s: 0.8; filter: blur(2px) brightness(0.7); }
+.statue[data-dist="2"] .statue-body { --s: 0.66; filter: blur(3.5px) brightness(0.55); }
 .statue[data-dist="3"] .statue-body,
-.statue[data-dist="4"] .statue-body { --s: 0.62; filter: brightness(0.52); }
+.statue[data-dist="4"] .statue-body { --s: 0.56; filter: blur(5px) brightness(0.45); }
 .statue-img {
   position: relative;
   z-index: 1;
@@ -555,7 +557,6 @@ h2 {
   height: calc(var(--sw) * 1.2);
   margin-bottom: calc(var(--sw) * -0.1);
   object-fit: contain;
-  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.5));
 }
 
 /* Stone pedestal with gold trim */
@@ -595,7 +596,7 @@ h2 {
 
 /* ---- Glass display cases ---- */
 .vitrine-marquee {
-  margin-top: 2rem;
+  margin-top: 3.5rem;
   padding: 30px 0 40px;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
@@ -684,13 +685,42 @@ h2 {
 
 /* Footer */
 .site-footer {
-  padding: 1.75rem clamp(1rem, 4vw, 3rem);
+  padding: 0 0 1.75rem;
   font-size: 0.875rem;
   color: var(--muted);
-  background: var(--surface);
+  background: linear-gradient(to bottom, var(--bg) 0%, var(--surface) 70%);
   text-align: center;
 }
-.site-footer p { margin: 0.25rem auto; max-width: 48rem; }
+.site-footer p { margin: 0.25rem auto; max-width: 48rem; padding: 0 clamp(1rem, 4vw, 3rem); }
+
+/* Footer art: the crew across the full width, with a second fireball CTA
+   standing between the two groups (above the image on narrow screens) */
+.footer-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1800px;
+  margin: 0 auto 1rem;
+  padding-top: 1rem;
+}
+.footer-crew {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cta-wrap--footer { margin: calc(var(--orb) * 0.5) auto 0.5rem; }
+@media (min-width: 800px) {
+  .footer-stage { padding-top: 7rem; }
+  .cta-wrap--footer {
+    --orb: clamp(150px, 14vw, 200px);
+    position: absolute;
+    bottom: 24%;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+}
 
 /* Motion preference */
 @media (prefers-reduced-motion: reduce) {
@@ -705,9 +735,9 @@ h2 {
   .vitrine-track .vit-clone { display: none; }
 }
 
-/* The game character as the mouse pointer (mouse users only).
-   Hotspot is her outstretched left palm; clickable things get a fire glow. */
+/* The pink fluffy pet as the mouse pointer (mouse users only).
+   Hotspot is the tip of its bow (left side); clickable things get a fire glow. */
 @media (pointer: fine) {
-  html { cursor: url("./assets/images/cursor.png") 7 30, auto; }
-  a, button, summary, .statue-btn, .vitrine { cursor: url("./assets/images/cursor-hover.png") 7 30, pointer; }
+  html { cursor: url("./assets/images/cursor.png") 7 34, auto; }
+  a, button, summary, .statue-btn, .vitrine { cursor: url("./assets/images/cursor-hover.png") 7 34, pointer; }
 }

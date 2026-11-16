@@ -43,7 +43,7 @@
 
   // Official logo. CSS decides the layout (centered on narrow screens, top
   // left on wide ones) so nothing jumps. On wide screens this pins it to the
-  // video's top-left corner (video pixels x 12-148, y 1-81) so it scales with
+  // video's top-left corner (x 12-148, y 1-81 on a 960 px wide video) so it scales with
   // the video.
   var hero = document.querySelector('.hero');
   var logo = document.querySelector('.hero-logo');
@@ -64,10 +64,12 @@
     var s = Math.max(W / vw, H / vh);
     var x0 = (W - vw * s) / 2;
     var y0 = (H - vh * s) / 2;
-    var bx = x0 + 12 * s;
-    var by = y0 + 1 * s;
-    var bw = 136 * s;
-    var bh = 80 * s;
+    // Corner box measured on a 960 px wide video; scale it to this video
+    var u = s * (vw / 960);
+    var bx = x0 + 12 * u;
+    var by = y0 + 1 * u;
+    var bw = 136 * u;
+    var bh = 80 * u;
     if (bx < 0 || by < 0) {
       // The old logo spot is cropped off screen: keep the CSS position.
       logo.style.cssText = '';
@@ -98,30 +100,29 @@
   }
 
   // The game is Windows PC only. On Mac, Linux and mobile:
-  // show the notice and hide the CTA.
+  // show the notice and hide every CTA orb (hero and footer).
+  var ctaWraps = Array.prototype.slice.call(document.querySelectorAll('.cta-wrap'));
   if (!/Windows NT/.test(navigator.userAgent)) {
-    var notice = document.querySelector('.os-notice');
-    if (notice) {
-      notice.hidden = false;
+    var notices = document.querySelectorAll('.os-notice');
+    for (var nn = 0; nn < notices.length; nn++) {
+      notices[nn].hidden = false;
     }
     var ctas = document.querySelectorAll('.cta');
     for (var i = 0; i < ctas.length; i++) {
       ctas[i].hidden = true;
     }
-    var blockedWrap = document.querySelector('.cta-wrap');
-    if (blockedWrap) {
-      blockedWrap.classList.add('is-blocked');
-    }
+    ctaWraps.forEach(function (w) { w.classList.add('is-blocked'); });
   }
 
-  // Fireball around the CTA orb: flames wrap the whole ball and burn upward,
+  // Fireball around each CTA orb: flames wrap the whole ball and burn upward,
   // with embers. Off for reduced motion, non-Windows visitors
   // (orb hidden), and whenever the orb is off screen or the tab is hidden.
-  var fire = document.querySelector('.orb-fire');
-  var ctaWrap = document.querySelector('.cta-wrap');
-  if (fire && ctaWrap && !ctaWrap.classList.contains('is-blocked') && !reduceMotion && fire.getContext) {
-    startFire(fire, ctaWrap);
-  }
+  ctaWraps.forEach(function (w) {
+    var fire = w.querySelector('.orb-fire');
+    if (fire && !w.classList.contains('is-blocked') && !reduceMotion && fire.getContext) {
+      startFire(fire, w);
+    }
+  });
 
   // A soft teardrop flame tongue, 64 wide by 128 tall (tip at the top)
   function makeSprite(rgb, round) {
@@ -305,10 +306,15 @@
       return ((turn % N) + N) % N;
     }
 
+    var faces = statues.map(function (s) { return s.querySelector('.statue-face'); });
     function render() {
-      statueRing.style.setProperty('--ring', (-turn * 360 / N) + 'deg');
+      // Ring and faces are plain transforms with the same timing, so the
+      // GPU animates them together and each statue keeps facing the screen
+      var ringAngle = -turn * 360 / N;
+      statueRing.style.transform = 'rotateY(' + ringAngle + 'deg)';
       var f = front();
       statues.forEach(function (st, k) {
+        faces[k].style.transform = 'rotateY(' + (-(k * 360 / N + ringAngle)) + 'deg) rotateX(10deg)';
         var rel = ((k - f) % N + N) % N;
         st.setAttribute('data-dist', String(Math.min(rel, N - rel)));
         statueBtns[k].setAttribute('aria-pressed', k === f ? 'true' : 'false');
