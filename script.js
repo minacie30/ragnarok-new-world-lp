@@ -434,4 +434,31 @@
       }
     }
   }
+
+  // Info ticker: repeat the requirement items until one set is wider than the
+  // band, then double it so translateX(-50%) loops seamlessly. Copies are
+  // hidden from screen readers. Slow, about 35 px per second.
+  var ttrack = document.querySelector('.ticker-track');
+  var tview = document.querySelector('.info-ticker');
+  if (ttrack && tview && !reduceMotion) {
+    var originalsT = Array.prototype.slice.call(ttrack.children);
+    function addCopy() {
+      originalsT.forEach(function (li) {
+        var c = li.cloneNode(true);
+        c.classList.add('ticker-clone');
+        c.setAttribute('aria-hidden', 'true');
+        ttrack.appendChild(c);
+      });
+    }
+    var guard = 0;
+    while (ttrack.scrollWidth < tview.clientWidth + 40 && guard < 10) {
+      addCopy();
+      guard++;
+    }
+    var sets = guard + 1;
+    for (var t2 = 0; t2 < sets; t2++) {
+      addCopy();
+    }
+    ttrack.style.animationDuration = Math.max(20, Math.round(ttrack.scrollWidth / 2 / 35)) + 's';
+  }
 })();

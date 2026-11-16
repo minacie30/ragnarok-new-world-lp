@@ -74,6 +74,8 @@ html[lang="th"] body { line-height: 1.85; }
   color: var(--bg);
 }
 main:focus { outline: none; }
+/* Clip the tilted ticker band's corners without creating a scroll box */
+main { overflow-x: clip; }
 
 :focus-visible {
   outline: 3px solid var(--focus);
@@ -441,6 +443,49 @@ h2 {
   letter-spacing: 0.03em;
 }
 
+/* Info ticker: a quiet, see-through strip on the seam between the hero and
+   the showroom. It carries the install requirements for anyone who looks
+   for them, without competing with the PLAY NOW button. */
+.info-ticker {
+  position: relative;
+  z-index: 4;
+  margin: -1.2rem -1rem;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(26, 21, 48, 0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transform: rotate(-1deg);
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: ticker-run 60s linear infinite;
+}
+.info-ticker:hover .ticker-track { animation-play-state: paused; }
+@keyframes ticker-run { to { transform: translateX(-50%); } }
+.ticker-track li {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 0;
+  color: var(--muted);
+  font-family: var(--game-font);
+  font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ticker-track li::after {
+  content: "·";
+  margin: 0 1.6rem;
+  color: rgba(201, 195, 230, 0.45);
+}
+
 /* Hero showroom
    Top: 8 hero duos standing still on pedestals, on a slowly turning ring.
    The one facing the screen is biggest; the rest stand back, smaller and
@@ -746,6 +791,8 @@ h2 {
   .cta-wrap::before, .orb-ring, .cta-orb, .orb-now { animation: none; }
   .orb-fire { display: none; }
   .statue-ring, .statue-face, .statue-body, .vitrine, .cta-orb { transition: none; }
+  .ticker-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .ticker-track .ticker-clone { display: none; }
   .vitrine-marquee { -webkit-mask-image: none; mask-image: none; }
   .vitrine-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 0 1rem; }
   .vit-item { animation: none; margin-right: 0; }
