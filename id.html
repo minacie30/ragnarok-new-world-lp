@@ -13,8 +13,10 @@
   <link rel="alternate" hreflang="vi" href="./vi.html">
   <link rel="alternate" hreflang="x-default" href="./en.html">
   <link rel="preload" href="./assets/fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css">
-  <script src="./script.js" defer></script>
+  <link rel="icon" href="./assets/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="./style.min.css">
+  <script src="./script.min.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Lewati ke konten</a>
@@ -22,6 +24,7 @@
   <main id="main" tabindex="-1">
     <section class="hero">
       <video class="hero-video" autoplay muted loop playsinline preload="metadata" width="1280" height="714" poster="./assets/images/hero-poster.webp" aria-hidden="true" tabindex="-1">
+        <source src="./assets/videos/hero-trailer-mobile.mp4" type="video/mp4" media="(max-width: 800px)">
         <source src="./assets/videos/hero-trailer.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
@@ -83,7 +86,7 @@
               <button type="button" class="statue-btn" data-slot="0" aria-pressed="true">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-1.webp" width="473" height="600" loading="lazy" decoding="async" alt="Petarung berambut merah dan gadis berambut cokelat dengan belati">
+                  <img class="statue-img" src="./assets/images/hero-1.webp" srcset="./assets/images/hero-1-sm.webp 300w, ./assets/images/hero-1.webp 473w" sizes="(max-width: 800px) 165px, 440px" width="473" height="600" loading="lazy" decoding="async" alt="Petarung berambut merah dan gadis berambut cokelat dengan belati">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -93,7 +96,7 @@
               <button type="button" class="statue-btn" data-slot="1" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-2.webp" width="561" height="600" loading="lazy" decoding="async" alt="Dua penembak berambut pirang dengan revolver emas">
+                  <img class="statue-img" src="./assets/images/hero-2.webp" srcset="./assets/images/hero-2-sm.webp 355w, ./assets/images/hero-2.webp 561w" sizes="(max-width: 800px) 165px, 440px" width="561" height="600" loading="lazy" decoding="async" alt="Dua penembak berambut pirang dengan revolver emas">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -103,7 +106,7 @@
               <button type="button" class="statue-btn" data-slot="2" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-3.webp" width="538" height="600" loading="lazy" decoding="async" alt="Gadis membawa buku dan anak laki-laki berjubah oranye, dengan hewan berbulu">
+                  <img class="statue-img" src="./assets/images/hero-3.webp" srcset="./assets/images/hero-3-sm.webp 341w, ./assets/images/hero-3.webp 538w" sizes="(max-width: 800px) 165px, 440px" width="538" height="600" loading="lazy" decoding="async" alt="Gadis membawa buku dan anak laki-laki berjubah oranye, dengan hewan berbulu">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -113,7 +116,7 @@
               <button type="button" class="statue-btn" data-slot="3" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-4.webp" width="547" height="600" loading="lazy" decoding="async" alt="Pasangan pedagang dengan gerobak, koin, dan boneka kayu">
+                  <img class="statue-img" src="./assets/images/hero-4.webp" srcset="./assets/images/hero-4-sm.webp 347w, ./assets/images/hero-4.webp 547w" sizes="(max-width: 800px) 165px, 440px" width="547" height="600" loading="lazy" decoding="async" alt="Pasangan pedagang dengan gerobak, koin, dan boneka kayu">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -123,7 +126,7 @@
               <button type="button" class="statue-btn" data-slot="4" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-5.webp" width="576" height="600" loading="lazy" decoding="async" alt="Pasangan pembawa tongkat dengan anjing laut merah muda">
+                  <img class="statue-img" src="./assets/images/hero-5.webp" srcset="./assets/images/hero-5-sm.webp 365w, ./assets/images/hero-5.webp 576w" sizes="(max-width: 800px) 165px, 440px" width="576" height="600" loading="lazy" decoding="async" alt="Pasangan pembawa tongkat dengan anjing laut merah muda">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -133,7 +136,7 @@
               <button type="button" class="statue-btn" data-slot="5" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-6.webp" width="643" height="600" loading="lazy" decoding="async" alt="Pendekar pedang pirang dan ksatria berambut biru dengan pedang besar">
+                  <img class="statue-img" src="./assets/images/hero-6.webp" srcset="./assets/images/hero-6-sm.webp 407w, ./assets/images/hero-6.webp 643w" sizes="(max-width: 800px) 165px, 440px" width="643" height="600" loading="lazy" decoding="async" alt="Pendekar pedang pirang dan ksatria berambut biru dengan pedang besar">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -143,7 +146,7 @@
               <button type="button" class="statue-btn" data-slot="6" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-7.webp" width="466" height="600" loading="lazy" decoding="async" alt="Pasangan pemanah dengan busur emas dan apel tertusuk panah">
+                  <img class="statue-img" src="./assets/images/hero-7.webp" srcset="./assets/images/hero-7-sm.webp 295w, ./assets/images/hero-7.webp 466w" sizes="(max-width: 800px) 165px, 440px" width="466" height="600" loading="lazy" decoding="async" alt="Pasangan pemanah dengan busur emas dan apel tertusuk panah">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -153,7 +156,7 @@
               <button type="button" class="statue-btn" data-slot="7" aria-pressed="false">
                 <span class="statue-face">
                   <span class="statue-body">
-                  <img class="statue-img" src="./assets/images/hero-8.webp" width="531" height="600" loading="lazy" decoding="async" alt="Pasangan berjubah hijau dengan tongkat cincin dan cakar">
+                  <img class="statue-img" src="./assets/images/hero-8.webp" srcset="./assets/images/hero-8-sm.webp 336w, ./assets/images/hero-8.webp 531w" sizes="(max-width: 800px) 165px, 440px" width="531" height="600" loading="lazy" decoding="async" alt="Pasangan berjubah hijau dengan tongkat cincin dan cakar">
                   <span class="plinth" aria-hidden="true"></span>
                   </span>
                 </span>
@@ -209,7 +212,7 @@
           <a class="cta cta-orb" href="#go2offer#"><span class="orb-main">Main</span> <span class="orb-now orb-now--long">sekarang</span> <span class="orb-sub">gratis di Steam</span></a>
           <p class="os-notice" hidden>Game ini hanya untuk PC Windows. Buka halaman ini di PC Windows-mu untuk memasangnya.</p>
         </div>
-      <img class="footer-crew" src="./assets/images/footer-crew.webp" width="1800" height="402" loading="lazy" decoding="async" alt="">
+      <img class="footer-crew" src="./assets/images/footer-crew.webp" srcset="./assets/images/footer-crew-sm.webp 900w, ./assets/images/footer-crew.webp 1800w" sizes="100vw" width="1800" height="402" loading="lazy" decoding="async" alt="">
     </div>
     <p>Ragnarok: The New World dikembangkan dan diterbitkan di Steam oleh Gravity Game Vision Limited, cabang dari Gravity Co., Ltd., di bawah lisensi resmi dari Gravity.</p>
   </footer>

@@ -784,6 +784,24 @@ h2 {
   }
 }
 
+/* Phones and small screens: same look, less work for slower processors.
+   Sparks off, background statues dimmed without the costly blur, and the
+   floating cases bob without the wobble. */
+@media (max-width: 800px) {
+  .hero-sparks { display: none; }
+  .statue[data-dist="1"] .statue-body { filter: brightness(0.7); }
+  .statue[data-dist="2"] .statue-body { filter: brightness(0.55); }
+  .statue[data-dist="3"] .statue-body,
+  .statue[data-dist="4"] .statue-body { filter: brightness(0.45); }
+  .statue-body { will-change: transform; }
+  .vit-item { animation-name: vitrine-bob; }
+  .info-ticker { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(26, 21, 48, 0.85); }
+}
+@keyframes vitrine-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
 /* Motion preference */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
