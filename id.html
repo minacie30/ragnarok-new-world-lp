@@ -21,77 +21,164 @@
 
   <main id="main" tabindex="-1">
     <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" width="960" height="540" poster="./assets/images/hero-poster.webp" aria-hidden="true" tabindex="-1">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" width="960" height="536" poster="./assets/images/hero-poster.webp" aria-hidden="true" tabindex="-1">
         <source src="./assets/videos/hero-trailer.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
       <img class="hero-logo" src="./assets/images/logo.webp" width="440" height="253" alt="Ragnarok: The New World">
       <div class="hero-sparks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <nav class="lang-switch" aria-label="Bahasa">
-        <ul>
-          <li><a href="./index.html" lang="th" hreflang="th" title="ไทย">TH</a></li>
-          <li><a href="./en.html" lang="en" hreflang="en" title="English">EN</a></li>
-          <li><a href="./fr.html" lang="fr" hreflang="fr" title="Français">FR</a></li>
-          <li><a href="./id.html" lang="id" hreflang="id" title="Bahasa Indonesia" aria-current="page">ID</a></li>
-          <li><a href="./zh.html" lang="zh-CN" hreflang="zh-CN" title="简体中文">中文</a></li>
-          <li><a href="./vi.html" lang="vi" hreflang="vi" title="Tiếng Việt">VI</a></li>
-        </ul>
-      </nav>
+      <div class="top-tools">
+        <details class="lang-menu">
+          <summary>
+            <svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span class="sr-only">Bahasa:</span> <span class="lang-code">ID</span>
+          </summary>
+          <ul class="lang-list">
+            <li><a href="./index.html" lang="th" hreflang="th">ไทย</a></li>
+            <li><a href="./en.html" lang="en" hreflang="en">English</a></li>
+            <li><a href="./fr.html" lang="fr" hreflang="fr">Français</a></li>
+            <li><a href="./id.html" lang="id" hreflang="id" aria-current="page">Bahasa Indonesia</a></li>
+            <li><a href="./zh.html" lang="zh-CN" hreflang="zh-CN">简体中文</a></li>
+            <li><a href="./vi.html" lang="vi" hreflang="vi">Tiếng Việt</a></li>
+          </ul>
+        </details>
+        <button type="button" class="sound-toggle" aria-pressed="false">
+          <svg class="ico ico-off" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="ico ico-on" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="sr-only">Suara trailer</span>
+        </button>
+      </div>
       <div class="hero-text">
         <p class="eyebrow">Ragnarok: The New World · PC Windows via Steam</p>
         <h1>Kembali ke Midgard di dunia terbuka</h1>
         <p class="lead">Gratis untuk mulai, dan mainkan sesuai iramamu.</p>
-        <p class="os-notice" hidden>Game ini hanya untuk PC Windows. Buka halaman ini di PC Windows-mu untuk memasangnya.</p>
         <div class="cta-wrap">
+          <canvas class="orb-fire" aria-hidden="true"></canvas>
           <span class="orb-ring" aria-hidden="true"></span>
           <a class="cta cta-orb" href="#go2offer#"><span class="orb-main">Main</span> <span class="orb-now orb-now--long">sekarang</span> <span class="orb-sub">gratis di Steam</span></a>
-        </div>
-        <div class="spec-card">
-          <img class="spec-buddy" src="./assets/images/hero-character.webp" width="231" height="440" alt="" decoding="async">
-          <p class="spec-title">Sebelum memasang</p>
-          <ul class="spec-chips">
-            <li class="spec-key">Hanya PC Windows</li>
-            <li>RAM 12 GB · disarankan 16 GB</li>
-            <li>Ruang kosong 30 GB</li>
-            <li>CPU dan kartu grafis: belum tercantum di Steam</li>
-            <li>Gratis untuk mulai · ada pembelian dalam game</li>
-            <li>Wajib akun Gravity</li>
-          </ul>
+          <p class="os-notice" hidden>Game ini hanya untuk PC Windows. Buka halaman ini di PC Windows-mu untuk memasangnya.</p>
         </div>
       </div>
     </section>
 
-    <section class="cards" aria-labelledby="cards-title">
-      <h2 id="cards-title">Pilih gayamu</h2>
-      <p class="muted">Kostum dan tunggangan dari video resmi Ragnarok: The New World. Ketuk kartu untuk memilihnya.</p>
-      <div class="card-marquee">
-        <ul class="card-track">
-          <li>
-            <button type="button" class="char-card" data-card="seal" aria-pressed="false">
+    <section class="showroom" aria-labelledby="show-title">
+      <h2 id="show-title">Showroom pahlawan</h2>
+      <p class="muted">Para pahlawan berdiri di atas alasnya saat panggung berputar. Pilih satu untuk membawanya ke depan.</p>
+      <div class="statue-stage">
+        <div class="show-floor" aria-hidden="true"></div>
+        <div class="statue-tilt">
+          <ul class="statue-ring">
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="0" aria-pressed="true">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-1.webp" width="363" height="460" loading="lazy" decoding="async" alt="Petarung berambut merah dan gadis berambut cokelat dengan belati">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="1" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-2.webp" width="430" height="460" loading="lazy" decoding="async" alt="Dua penembak berambut pirang dengan revolver emas">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="2" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-3.webp" width="412" height="460" loading="lazy" decoding="async" alt="Gadis membawa buku dan anak laki-laki berjubah oranye, dengan hewan berbulu">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="3" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-4.webp" width="420" height="460" loading="lazy" decoding="async" alt="Pasangan pedagang dengan gerobak, koin, dan boneka kayu">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="4" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-5.webp" width="442" height="460" loading="lazy" decoding="async" alt="Pasangan pembawa tongkat dengan anjing laut merah muda">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="5" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-6.webp" width="493" height="460" loading="lazy" decoding="async" alt="Pendekar pedang pirang dan ksatria berambut biru dengan pedang besar">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="6" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-7.webp" width="357" height="460" loading="lazy" decoding="async" alt="Pasangan pemanah dengan busur emas dan apel tertusuk panah">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="statue">
+              <button type="button" class="statue-btn" data-slot="7" aria-pressed="false">
+                <span class="statue-face">
+                  <span class="statue-body">
+                  <img class="statue-img" src="./assets/images/hero-8.webp" width="407" height="460" loading="lazy" decoding="async" alt="Pasangan berjubah hijau dengan tongkat cincin dan cakar">
+                  <span class="plinth" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="vitrine-marquee">
+        <ul class="vitrine-track">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="seal" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-seal.webp" aria-hidden="true" tabindex="-1">
                 <source src="./assets/videos/card-seal.mp4" type="video/mp4">
               </video>
               <span class="card-label">Tunggangan Adorable Seal</span>
             </button>
           </li>
-          <li>
-            <button type="button" class="char-card" data-card="kitty" aria-pressed="false">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="kitty" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-kitty.webp" aria-hidden="true" tabindex="-1">
                 <source src="./assets/videos/card-kitty.mp4" type="video/mp4">
               </video>
               <span class="card-label">Kostum Campus Kitty</span>
             </button>
           </li>
-          <li>
-            <button type="button" class="char-card" data-card="crimson" aria-pressed="false">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="crimson" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-crimson.webp" aria-hidden="true" tabindex="-1">
                 <source src="./assets/videos/card-crimson.mp4" type="video/mp4">
               </video>
               <span class="card-label">Kostum Crimson Sura</span>
             </button>
           </li>
-          <li>
-            <button type="button" class="char-card" data-card="sakura" aria-pressed="false">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="sakura" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-sakura.webp" aria-hidden="true" tabindex="-1">
                 <source src="./assets/videos/card-sakura.mp4" type="video/mp4">
               </video>
@@ -104,12 +191,6 @@
   </main>
 
   <footer class="site-footer">
-    <ul class="social">
-      <li><a href="https://discord.com/invite/GhKGR6cTBm" target="_blank" rel="noopener">Discord</a></li>
-      <li><a href="https://www.facebook.com/RagnarokTheNewWorld.Gravity" target="_blank" rel="noopener">Facebook</a></li>
-      <li><a href="https://www.tiktok.com/@ragnarok.the.new.world" target="_blank" rel="noopener">TikTok</a></li>
-      <li><a href="https://www.youtube.com/@RagnarokTheNewWorld" target="_blank" rel="noopener">YouTube</a></li>
-    </ul>
     <p>Ragnarok: The New World dikembangkan dan diterbitkan di Steam oleh Gravity Game Vision Limited, cabang dari Gravity Co., Ltd., di bawah lisensi resmi dari Gravity.</p>
   </footer>
 </body>
