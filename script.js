@@ -289,18 +289,14 @@
   }
 
   // Hero showroom: 8 statues on a ring (45 degrees apart); the one in front
-  // is featured. The ring turns one step every few seconds on its own,
-  // whether or not the mouse is over it. Picking a statue turns it to the
-  // front and holds it for 8 seconds before the turning resumes.
+  // is featured and larger. The ring turns only on demand — the arrow
+  // buttons step it, and picking a statue brings it to the front.
   var statueRing = document.querySelector('.statue-ring');
   if (statueRing) {
     var statues = Array.prototype.slice.call(statueRing.querySelectorAll('.statue'));
     var statueBtns = statues.map(function (s) { return s.querySelector('.statue-btn'); });
     var N = statues.length;
     var turn = 0;
-    var showOnScreen = false;
-    var heldUntil = 0;
-    var timer = null;
 
     function front() {
       return ((turn % N) + N) % N;
@@ -331,56 +327,35 @@
       render();
     }
 
-    function tick() {
-      if (showOnScreen && !document.hidden && Date.now() > heldUntil) {
-        turn += 1;
-        render();
-      }
-    }
-
-    function syncTimer() {
-      var should = showOnScreen && !reduceMotion;
-      if (should && !timer) {
-        timer = window.setInterval(tick, 5500);
-      } else if (!should && timer) {
-        window.clearInterval(timer);
-        timer = null;
-      }
+    function step(d) {
+      turn += d;
+      render();
+      playSelectSound();
     }
 
     statueBtns.forEach(function (btn, k) {
       btn.addEventListener('click', function () {
-        heldUntil = Date.now() + 8000;
         goTo(k);
         playSelectSound();
       });
-      // Keyboard users: bring the focused statue to the front and hold it
-      // for a while. Mouse clicks are handled above and never block the
-      // automatic turning for longer than the hold.
+      // Keyboard users: bring the focused statue to the front.
       btn.addEventListener('focus', function () {
         var byKeyboard = false;
         try { byKeyboard = btn.matches(':focus-visible'); } catch (e) { byKeyboard = false; }
-        if (byKeyboard) {
-          heldUntil = Date.now() + 8000;
-          if (front() !== k) {
-            goTo(k);
-          }
+        if (byKeyboard && front() !== k) {
+          goTo(k);
         }
       });
     });
 
     var showroom = statueRing.closest('.showroom');
 
-    if ('IntersectionObserver' in window && showroom) {
-      new IntersectionObserver(function (entries) {
-        showOnScreen = entries[0].isIntersecting;
-        render();
-        syncTimer();
-      }, { threshold: 0.15 }).observe(showroom);
-    } else {
-      showOnScreen = true;
-      syncTimer();
-    }
+    // Wire the manual turn arrows
+    var navPrev = document.querySelector('.statue-nav--prev');
+    var navNext = document.querySelector('.statue-nav--next');
+    if (navPrev) { navPrev.addEventListener('click', function () { step(-1); }); }
+    if (navNext) { navNext.addEventListener('click', function () { step(1); }); }
+
     render();
     // Turn animations on only after the first layout is painted
     window.requestAnimationFrame(function () {

@@ -24,8 +24,8 @@
   <main id="main" tabindex="-1">
     <section class="hero">
       <video class="hero-video" autoplay muted loop playsinline preload="metadata" width="1920" height="1080" poster="./assets/images/hero-poster.webp?v=2" aria-hidden="true" tabindex="-1">
-        <source src="./assets/videos/hero-trailer-mobile.mp4?v=2" type="video/mp4" media="(max-width: 800px)">
-        <source src="./assets/videos/hero-trailer.mp4?v=3" type="video/mp4">
+        <source src="./assets/videos/hero-trailer-mobile.mp4?v=4" type="video/mp4" media="(max-width: 800px)">
+        <source src="./assets/videos/hero-trailer.mp4?v=4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-sparks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -75,11 +75,20 @@
     </section>
 
     <section class="showroom" aria-labelledby="show-title">
+      <video class="showroom-bg-video" autoplay muted loop playsinline preload="none" poster="./assets/images/showroom-bg.webp" aria-hidden="true" tabindex="-1">
+        <source src="./assets/videos/showroom-bg.mp4" type="video/mp4">
+      </video>
       <div class="show-grid">
         <div class="show-main">
           <h2 id="show-title">Le showroom des héros</h2>
           <p class="muted">Les héros posent sur leur piédestal pendant que la scène tourne. Choisis-en un pour l’amener au premier plan.</p>
           <div class="statue-stage">
+            <button type="button" class="statue-nav statue-nav--prev" aria-label="Héros précédent">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="statue-nav statue-nav--next" aria-label="Héros suivant">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
             <div class="show-floor" aria-hidden="true"></div>
             <div class="statue-tilt">
               <ul class="statue-ring">
