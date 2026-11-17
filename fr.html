@@ -75,12 +75,14 @@
     </section>
 
     <section class="showroom" aria-labelledby="show-title">
-      <h2 id="show-title">Le showroom des héros</h2>
-      <p class="muted">Les héros posent sur leur piédestal pendant que la scène tourne. Choisis-en un pour l’amener au premier plan.</p>
-      <div class="statue-stage">
-        <div class="show-floor" aria-hidden="true"></div>
-        <div class="statue-tilt">
-          <ul class="statue-ring">
+      <div class="show-grid">
+        <div class="show-main">
+          <h2 id="show-title">Le showroom des héros</h2>
+          <p class="muted">Les héros posent sur leur piédestal pendant que la scène tourne. Choisis-en un pour l’amener au premier plan.</p>
+          <div class="statue-stage">
+            <div class="show-floor" aria-hidden="true"></div>
+            <div class="statue-tilt">
+              <ul class="statue-ring">
             <li class="statue">
               <button type="button" class="statue-btn" data-slot="0" aria-pressed="true">
                 <span class="statue-face">
@@ -161,11 +163,70 @@
                 </span>
               </button>
             </li>
-          </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="faq-col">
+          <h2 class="faq-title">Questions fréquentes</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Le jeu est-il gratuit ?</summary>
+              <p>Oui — Ragnarok: The New World est gratuit pour commencer, avec des achats en jeu facultatifs.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Sur quelle plateforme ?</summary>
+              <p>Sur PC Windows, via Steam. Un compte Gravity est requis pour jouer.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Est-ce un jeu en ligne ?</summary>
+              <p>Oui. C'est un MMORPG : tu explores le monde ouvert et tu joues aux côtés d'autres joueurs.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Quand sort-il ?</summary>
+              <p>Aucune date de sortie n'a encore été annoncée. Ajoute le jeu à ta liste de souhaits Steam pour être prévenu.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Que faut-il pour y jouer ?</summary>
+              <p>Environ 12 Go de RAM (16 Go recommandés) et 30 Go d'espace libre. Le processeur et la carte graphique ne sont pas encore indiqués sur Steam.</p>
+            </details>
+          </div>
         </div>
       </div>
       <div class="vitrine-marquee">
         <ul class="vitrine-track">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="hero" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-hero.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-hero.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Notre héros aux cheveux roux</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="maiden" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-maiden.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-maiden.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">L'éclat d'une mage</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="knight" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-knight.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-knight.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Un bretteur à la cape</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="field" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-field.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-field.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Vers les plaines ouvertes</span>
+            </button>
+          </li>
           <li class="vit-item">
             <button type="button" class="vitrine" data-card="seal" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-seal.webp" aria-hidden="true" tabindex="-1">

@@ -76,12 +76,14 @@
     </section>
 
     <section class="showroom" aria-labelledby="show-title">
-      <h2 id="show-title">โชว์รูมฮีโร่</h2>
-      <p class="muted">ฮีโร่ยืนบนแท่นขณะที่เวทีหมุน เลือกฮีโร่เพื่อนำขึ้นมาด้านหน้า</p>
-      <div class="statue-stage">
-        <div class="show-floor" aria-hidden="true"></div>
-        <div class="statue-tilt">
-          <ul class="statue-ring">
+      <div class="show-grid">
+        <div class="show-main">
+          <h2 id="show-title">โชว์รูมฮีโร่</h2>
+          <p class="muted">ฮีโร่ยืนบนแท่นขณะที่เวทีหมุน เลือกฮีโร่เพื่อนำขึ้นมาด้านหน้า</p>
+          <div class="statue-stage">
+            <div class="show-floor" aria-hidden="true"></div>
+            <div class="statue-tilt">
+              <ul class="statue-ring">
             <li class="statue">
               <button type="button" class="statue-btn" data-slot="0" aria-pressed="true">
                 <span class="statue-face">
@@ -162,11 +164,70 @@
                 </span>
               </button>
             </li>
-          </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="faq-col">
+          <h2 class="faq-title">คำถามที่พบบ่อย</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>เล่นฟรีไหม?</summary>
+              <p>ใช่ — Ragnarok: The New World เริ่มเล่นได้ฟรี และมีการซื้อไอเทมภายในเกมแบบไม่บังคับ</p>
+            </details>
+            <details class="faq-item">
+              <summary>เล่นบนแพลตฟอร์มไหน?</summary>
+              <p>บน Windows PC ผ่าน Steam และต้องมีบัญชี Gravity เพื่อเล่น</p>
+            </details>
+            <details class="faq-item">
+              <summary>เป็นเกมออนไลน์ไหม?</summary>
+              <p>ใช่ เป็นเกม MMORPG คุณจะได้สำรวจโลกเปิดกว้างและเล่นร่วมกับผู้เล่นคนอื่น</p>
+            </details>
+            <details class="faq-item">
+              <summary>วางจำหน่ายเมื่อไหร่?</summary>
+              <p>ยังไม่มีการประกาศวันวางจำหน่าย เพิ่มเกมลงใน Steam wishlist เพื่อรับการแจ้งเตือน</p>
+            </details>
+            <details class="faq-item">
+              <summary>ต้องใช้สเปกอะไรบ้าง?</summary>
+              <p>RAM ประมาณ 12 GB (แนะนำ 16 GB) และพื้นที่ว่าง 30 GB ส่วน CPU และการ์ดจอยังไม่มีการระบุบน Steam</p>
+            </details>
+          </div>
         </div>
       </div>
       <div class="vitrine-marquee">
         <ul class="vitrine-track">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="hero" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-hero.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-hero.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">ฮีโร่ผมแดงของเรา</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="maiden" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-maiden.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-maiden.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">แสงของผู้ร่ายเวท</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="knight" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-knight.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-knight.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">นักดาบสวมผ้าคลุม</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="field" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-field.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-field.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">ออกสู่ทุ่งกว้าง</span>
+            </button>
+          </li>
           <li class="vit-item">
             <button type="button" class="vitrine" data-card="seal" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-seal.webp" aria-hidden="true" tabindex="-1">

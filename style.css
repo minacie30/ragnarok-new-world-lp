@@ -496,7 +496,7 @@ h2 {
    higher. Every statue always faces the viewer (billboarding via --ring).
    Bottom: a wider ring of 12 glass display cases, 4 visible at a time. */
 .showroom {
-  --sw: clamp(100px, 12vw, 160px);
+  --sw: clamp(68px, 7vw, 104px);
   --sr: calc(var(--sw) * 2.4);
   --vw: clamp(150px, 19vw, 240px);
   --vr: calc(var(--vw) * 2.05);
@@ -509,8 +509,65 @@ h2 {
     url("./assets/images/showroom-bg.webp") center 30% / cover no-repeat,
     var(--bg);
 }
-.showroom h2, .showroom > .muted { padding: 0 1rem; }
-.showroom > .muted { color: var(--text); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); }
+.showroom h2, .showroom .muted { padding: 0 1rem; }
+.showroom .muted { color: var(--text); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); }
+
+/* ---- Showroom + FAQ two-column layout ---- */
+.show-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 4vw, 2.75rem);
+  max-width: 1180px;
+  margin: 0 auto;
+  align-items: center;
+}
+.show-main { min-width: 0; }
+.faq-col { min-width: 0; text-align: left; padding: 0 clamp(1rem, 3vw, 1.5rem); }
+@media (min-width: 900px) {
+  .show-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+.faq-title {
+  font-family: var(--game-font);
+  font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+.faq-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.faq-item {
+  border: 1px solid rgba(77, 232, 255, 0.28);
+  border-radius: 12px;
+  background: rgba(26, 21, 48, 0.55);
+  overflow: hidden;
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  flex: none;
+  color: var(--neon-a);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.faq-item[open] summary { color: var(--gold); }
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item p {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
 
 /* ---- Statues ---- */
 .statue-stage {

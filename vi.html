@@ -76,12 +76,14 @@
     </section>
 
     <section class="showroom" aria-labelledby="show-title">
-      <h2 id="show-title">Phòng trưng bày anh hùng</h2>
-      <p class="muted">Các anh hùng đứng trên bệ khi sân khấu xoay. Chọn một người để đưa lên phía trước.</p>
-      <div class="statue-stage">
-        <div class="show-floor" aria-hidden="true"></div>
-        <div class="statue-tilt">
-          <ul class="statue-ring">
+      <div class="show-grid">
+        <div class="show-main">
+          <h2 id="show-title">Phòng trưng bày anh hùng</h2>
+          <p class="muted">Các anh hùng đứng trên bệ khi sân khấu xoay. Chọn một người để đưa lên phía trước.</p>
+          <div class="statue-stage">
+            <div class="show-floor" aria-hidden="true"></div>
+            <div class="statue-tilt">
+              <ul class="statue-ring">
             <li class="statue">
               <button type="button" class="statue-btn" data-slot="0" aria-pressed="true">
                 <span class="statue-face">
@@ -162,11 +164,70 @@
                 </span>
               </button>
             </li>
-          </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="faq-col">
+          <h2 class="faq-title">Câu hỏi thường gặp</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Có chơi miễn phí không?</summary>
+              <p>Có — Ragnarok: The New World miễn phí để bắt đầu, với các khoản mua trong game tùy chọn.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Chơi trên nền tảng nào?</summary>
+              <p>Trên PC Windows, qua Steam. Cần tài khoản Gravity để chơi.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Đây có phải game online không?</summary>
+              <p>Đúng vậy. Đây là game MMORPG, bạn khám phá thế giới mở và chơi cùng những người chơi khác.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Khi nào phát hành?</summary>
+              <p>Ngày phát hành vẫn chưa được công bố. Hãy thêm vào wishlist Steam của bạn để nhận thông báo.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Cần gì để chơi?</summary>
+              <p>Khoảng 12 GB RAM (khuyến nghị 16 GB) và 30 GB dung lượng trống. CPU và card đồ họa chưa được công bố trên Steam.</p>
+            </details>
+          </div>
         </div>
       </div>
       <div class="vitrine-marquee">
         <ul class="vitrine-track">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="hero" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-hero.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-hero.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Người hùng tóc đỏ</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="maiden" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-maiden.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-maiden.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Ánh sáng của pháp sư</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="knight" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-knight.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-knight.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Kiếm sĩ khoác áo choàng</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="field" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-field.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-field.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Tiến ra đồng rộng</span>
+            </button>
+          </li>
           <li class="vit-item">
             <button type="button" class="vitrine" data-card="seal" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-seal.webp" aria-hidden="true" tabindex="-1">

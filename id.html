@@ -75,12 +75,14 @@
     </section>
 
     <section class="showroom" aria-labelledby="show-title">
-      <h2 id="show-title">Showroom pahlawan</h2>
-      <p class="muted">Para pahlawan berdiri di atas alasnya saat panggung berputar. Pilih satu untuk membawanya ke depan.</p>
-      <div class="statue-stage">
-        <div class="show-floor" aria-hidden="true"></div>
-        <div class="statue-tilt">
-          <ul class="statue-ring">
+      <div class="show-grid">
+        <div class="show-main">
+          <h2 id="show-title">Showroom pahlawan</h2>
+          <p class="muted">Para pahlawan berdiri di atas alasnya saat panggung berputar. Pilih satu untuk membawanya ke depan.</p>
+          <div class="statue-stage">
+            <div class="show-floor" aria-hidden="true"></div>
+            <div class="statue-tilt">
+              <ul class="statue-ring">
             <li class="statue">
               <button type="button" class="statue-btn" data-slot="0" aria-pressed="true">
                 <span class="statue-face">
@@ -161,11 +163,70 @@
                 </span>
               </button>
             </li>
-          </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="faq-col">
+          <h2 class="faq-title">Pertanyaan umum</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Apakah gratis dimainkan?</summary>
+              <p>Ya — Ragnarok: The New World gratis untuk dimulai, dengan pembelian dalam game yang bersifat opsional.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Di platform apa?</summary>
+              <p>Di PC Windows, melalui Steam. Diperlukan akun Gravity untuk bermain.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Apakah ini game online?</summary>
+              <p>Ya. Ini MMORPG, jadi kamu menjelajahi dunia terbuka dan bermain bersama pemain lain.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Kapan rilisnya?</summary>
+              <p>Tanggal rilis belum diumumkan. Tambahkan ke wishlist Steam-mu untuk mendapat pemberitahuan.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Apa yang dibutuhkan untuk menjalankannya?</summary>
+              <p>Sekitar 12 GB RAM (disarankan 16 GB) dan 30 GB ruang kosong. CPU dan kartu grafis belum tercantum di Steam.</p>
+            </details>
+          </div>
         </div>
       </div>
       <div class="vitrine-marquee">
         <ul class="vitrine-track">
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="hero" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-hero.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-hero.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Pahlawan berambut merah</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="maiden" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-maiden.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-maiden.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Cahaya sang penyihir</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="knight" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-knight.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-knight.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Pendekar pedang berjubah</span>
+            </button>
+          </li>
+          <li class="vit-item">
+            <button type="button" class="vitrine" data-card="field" aria-pressed="false">
+              <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-field.webp" aria-hidden="true" tabindex="-1">
+                <source src="./assets/videos/card-field.mp4" type="video/mp4">
+              </video>
+              <span class="card-label">Menuju padang terbuka</span>
+            </button>
+          </li>
           <li class="vit-item">
             <button type="button" class="vitrine" data-card="seal" aria-pressed="false">
               <video class="card-video" muted loop playsinline preload="none" width="360" height="480" poster="./assets/images/card-seal.webp" aria-hidden="true" tabindex="-1">
