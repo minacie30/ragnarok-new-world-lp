@@ -961,6 +961,6 @@ h2 {
 /* The pink fluffy pet as the mouse pointer (mouse users only).
    Hotspot is the tip of its bow (left side); clickable things get a fire glow. */
 @media (pointer: fine) {
-  html { cursor: url("./assets/images/cursor.png") 19 7, auto; }
-  a, button, summary, .statue-btn, .vitrine { cursor: url("./assets/images/cursor-hover.png") 19 7, pointer; }
+  html { cursor: url("./assets/images/cursor.png?v=2") 13 5, auto; }
+  a, button, summary, .statue-btn, .vitrine { cursor: url("./assets/images/cursor-hover.png?v=2") 13 5, pointer; }
 }
